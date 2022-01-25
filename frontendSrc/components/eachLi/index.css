@@ -1,0 +1,16 @@
+
+.name-para{
+    width: 300px;
+}
+.income-para{
+    width: 200px;
+}
+.del-btn{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: darkcyan;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
