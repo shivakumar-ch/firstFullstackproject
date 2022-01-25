@@ -1,6 +1,6 @@
 import { useEffect,useState } from 'react'
 import './index.css'
-import {delUsers,getUsers,addUser} from "../../mySlice"
+import {delUsers,getUsers,updateUser} from "../../mySlice"
 import {useDispatch} from "react-redux"
 
 function EachItem(props) {
@@ -11,6 +11,7 @@ function EachItem(props) {
   const [editedName, setEditedName] = useState('');
   const [editedIncome, setEditedIncome] = useState('');
   const [showEditBox, toggleEditedBox] = useState(true);
+  // const [errMsg, changeErrMsg] = useState('');
 
   useEffect(()=>{
     setEditedName(name)
@@ -22,13 +23,19 @@ function EachItem(props) {
           dispatch(getUsers())
       }
     
-    const editFunc=()=>{
+    const editBoxFunc=()=>{
       toggleEditedBox(!showEditBox)
     }
 
-    const updateUser=()=>{
-      // dispatch(updateUser({id:_id,name:editedName,income:editedIncome}))
-      editFunc()
+    const updateUserFunc=()=>{
+      if(editedName !=='' && editedIncome!==''){
+        dispatch(updateUser({_id,name:editedName,income:editedIncome}))
+      editBoxFunc()
+      dispatch(getUsers())
+      }else{
+        alert("Enter Valid Inputs")
+      }
+       
     }
 
     return  <>
@@ -38,15 +45,15 @@ function EachItem(props) {
                 <p className='income-para'>{income}</p>
                 <div>
                   <button onClick={delData} className='del-btn'>del</button>
-                <button onClick={editFunc}>Edit</button>
+                <button className='del-btn' onClick={editBoxFunc}>Edit</button>
                 </div>
                 
               </>
               ):(
                 <>
-                  <input value={editedName} onChange={(e)=>setEditedName(e.target.value)}/>
-                  <input value={editedIncome} onChange={(e)=>setEditedIncome(e.target.value)}/>
-                  <button onClick={updateUser}>update</button>
+                  <input className='inputs' value={editedName} onChange={(e)=>setEditedName(e.target.value)}/>
+                  <input className='inputs' value={editedIncome} onChange={(e)=>setEditedIncome(e.target.value)}/>
+                  <button className='del-btn' onClick={updateUserFunc}>update</button>
                 </>
               )}
             </>

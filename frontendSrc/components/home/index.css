@@ -54,6 +54,16 @@
     flex-direction: column;
     align-items: center;
 }
+.li-item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    margin: 20px 0px;
+    padding: 5px;
+    box-shadow: 1px 2px 3px 2px rgb(79, 145, 139);
+    color: black;
+}
 .each-item{
     display: flex;
     justify-content: space-around;
@@ -62,7 +72,17 @@
     margin: 20px 0px;
     padding: 5px;
     box-shadow: 1px 2px 3px 2px rgb(79, 145, 139);
+    color: black;
   }
+.each-item:hover{
+    transform: scale(1.005) ;
+    /* background-color: red; */
+    font-weight: 600;
+}
   ul{
       width: 90%;
+      padding: 20px 30px;
+      border-radius: 10px;
+      border: 3px solid rgb(79, 145, 139);
+      background-color: #dfdbc5
   }
